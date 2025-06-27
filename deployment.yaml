@@ -1,25 +1,35 @@
+#prettier-ignore
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-node-app
+  name: nodejs-hello
   namespace: default
-  labels:
-    app: my-node-app
+
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-node-app
+      app: nodejs-hello
   template:
     metadata:
       labels:
-        app: my-node-app
+        app: nodejs-hello
     spec:
       containers:
-        - name: my-node-app
-          image: ghcr.io/catabey/my-node-app:latest  # Burayı kendi image'ınla değiştir!
+        - name: nodejs-hello
+          image: docker.io/otcdigital/nodejs-hello:1.0.0
           ports:
-            - containerPort: 3000  # main.js bu portta çalışıyorsa
-          env:
-            - name: NODE_ENV
-              value: "production"
+            - containerPort: 3000
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nodejs-hello-service
+#   namespace: default
+# spec:
+#   selector:
+#     app: nodejs-hello
+#   ports:
+#     - port: 80
+#       targetPort: 3000
+#   type: ClusterIP
