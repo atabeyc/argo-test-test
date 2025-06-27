@@ -21,15 +21,15 @@ spec:
           ports:
             - containerPort: 3000
 # ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: nodejs-hello-service
-#   namespace: default
-# spec:
-#   selector:
-#     app: nodejs-hello
-#   ports:
-#     - port: 80
-#       targetPort: 3000
-#   type: ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: argo-test-test-service
+  namespace: default
+spec:
+  selector:
+    app: argo-test-test
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: ClusterIP
