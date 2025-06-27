@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs-hello
+  name: argo-test-test
   namespace: default
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodejs-hello
+      app: argo-test-test
   template:
     metadata:
       labels:
-        app: nodejs-hello
+        app: argo-test-test
     spec:
       containers:
-        - name: nodejs-hello
-          image: docker.io/otcdigital/nodejs-hello:1.0.0
+        - name: argo-test-test
+          image: docker.io/otcdigital/argo-test-test:1.0.0
           ports:
             - containerPort: 3000
 # ---
